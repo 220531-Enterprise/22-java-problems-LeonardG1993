@@ -19,11 +19,28 @@ public class EvaluationService {
 	 * and return it. For conversion and rounding use Math.round().
 	 */
 	static class SpeedConverter {
+		
+		public static void main(String[] args) {
+			
+			System.out.println(toMilesPerHour(1.5));
+		}
 
 		public static long toMilesPerHour(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return 0;
-		}
+			
+			double speed;
+			
+			if(kilometersPerHour < 0) {
+				return -1L;
+			}else {
+				speed = (long) (kilometersPerHour / 1.609);
+			}
+			
+			return Math.round(speed);
+			
+			}
+		
+		
 
 		/**
 		 * 1.B Speed Converter - Print Conversion
