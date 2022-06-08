@@ -1,9 +1,17 @@
 package com.revature.eval.java.core;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
 public class EvaluationService {
+	
+	public static void main(String[] args) {
+		
+		printYearsAndDays(525600);
+		printYearsAndDays(-8);
+		
+	}
 
 	/**
 	 * 1.A Speed Converter - Convert to MilesPerHour
@@ -58,8 +66,17 @@ public class EvaluationService {
 		 * Value"
 		 */
 		public static String printConversion(double kilometersPerHour) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			
+			long mph = toMilesPerHour(kilometersPerHour);
+			String conversion;
+			
+			if (kilometersPerHour < 0) {
+				String noNO = "Invalid Value";
+				return noNO;
+			} else {
+				return conversion = kilometersPerHour + " km/h = " + mph + " mi/h"; 
+			}
+			
 		}
 	}
 
@@ -83,9 +100,19 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	public String printMegaBytesAndKiloBytes(int XX) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String printMegaBytesAndKiloBytes(int kilobytes) {
+		
+		int megabytes = kilobytes / 1024;
+		int leftovers = kilobytes % 1024;
+		
+		if (kilobytes < 0) {
+			String invalid = "Invalid Value";
+			return invalid;
+		}else {
+			String valid = kilobytes + " KB = " + megabytes + " MB and " + leftovers + " KB";
+			return valid;
+		}
+				
 	}
 
 	/**
@@ -107,9 +134,19 @@ public class EvaluationService {
 	 * 
 	 * If the hourOfDay parameter is less than 0 or greater than 23, return false.
 	 */
-	public boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	public boolean shouldWakeUp(boolean barking, int hourOfDay) {
+		if (hourOfDay < 0) {
+			return false;
+		} else if (hourOfDay >= 0 && hourOfDay < 8) {
+			return true;
+		} else if (hourOfDay >= 8 && hourOfDay < 22) {
+			return false;
+		} else if (hourOfDay >= 22 && hourOfDay < 23) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	/**
@@ -124,8 +161,8 @@ public class EvaluationService {
 	 * Otherwise, return false;
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+		System.out.format("%.3f", firstNum);
 	}
 
 	/**
@@ -141,16 +178,33 @@ public class EvaluationService {
 	static class TeenNumberChecker {
 
 		public static boolean hasTeen(int x, int y, int z) {
-			// TODO Write an implementation for this method declaration
-			return false;
+			
+			boolean x1 = isTeen(x);
+			boolean y1 = isTeen(y);
+			boolean z1 = isTeen(z);
+						
+			if(x1 = true) {
+				return true;
+			} else if (y1 = true){
+				return true;
+			} else if (z1 = true) {
+				return true;
+			} else {
+				return false;
+			}
+			
 		}
 
 		// We can initialize isTeen method first
 		// Then pass the parameter to hasTeen method
 
 		public static boolean isTeen(int number) {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if (number >= 13 && number <= 19) {
+				return true;
+			} else {
+				return false;
+			}
+			
 		}
 	}
 
@@ -170,8 +224,24 @@ public class EvaluationService {
 	 * ZZ represents the calculated days.
 	 */
 	public String printYearsAndDays(long minutes) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		long years = minutes / 525600;
+		long extra = minutes % 525600;
+		long days = extra / 1440;
+		
+		if (minutes < 0) {
+			String invalidValue = "Invalid Value";
+			System.out.println(invalidValue);
+			return invalidValue;
+		} else {
+			
+			String valid = minutes + " min = " + years + " y and " + days + " days";
+			System.out.println(valid);
+			return valid;
+		}
+		
+		
+		
 	}
 
 	/**
@@ -184,8 +254,41 @@ public class EvaluationService {
 	 * statement or switch statement whatever is easier for you.
 	 */
 	public String printNumberInWord(int number) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if (number < 0) {
+			String other = "OTHER";
+			return other;
+		}else if (number == 1) {
+			String one = "ONE";
+			return one;
+		}else if (number == 2) {
+			String two = "TWO";
+			return two;
+		}else if (number == 3) {
+			String three = "THREE";
+			return three;
+		}else if (number == 4) {
+			String four = "FOUR";
+			return four;
+		}else if (number == 5) {
+			String five = "FIVE";
+			return five;
+		}else if(number == 6) {
+			String six = "SIX";
+			return six;
+		}else if (number == 7) {
+			String seven = "SEVEN";
+			return seven;
+		}else if (number == 8) {
+			String eight = "EIGHT";
+			return eight;
+		}else if (number == 9) {
+			String nine = "NINE";
+			return nine;
+		}else {
+			String other = "OTHER";
+			return other;
+		}
 	}
 
 	/**
@@ -208,8 +311,25 @@ public class EvaluationService {
 	 * and there is no resulting remainder.
 	 */
 	public int getGreatestCommonDivisor(int first, int second) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		
+		
+		if (first < 10 || second < 10) {
+			int invalid = -1;
+			return invalid;
+		} else if (first >= second){
+			
+			int b = first % second;
+			int c;
+			
+			while (b != 0){
+				
+				 
+			
+			} 
+			
+			
+		}
 	}
 
 	/**
@@ -226,8 +346,21 @@ public class EvaluationService {
 	 * invalid value.
 	 */
 	public int sumFirstAndLastDigit(int num) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		if (num < 0) {
+			return -1;
+		} else {
+			String n = String.valueOf(num);
+			char begin = n.charAt(0);
+			char end = n.charAt(n.length() - 1);
+			
+			int b = Character.getNumericValue(begin);
+			int e = Character.getNumericValue(end);
+			
+			return b + e;
+			
+			
+		}
 	}
 
 	/**
