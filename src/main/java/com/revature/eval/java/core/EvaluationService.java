@@ -1,17 +1,19 @@
 package com.revature.eval.java.core;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class EvaluationService {
 	
-	public static void main(String[] args) {
-		
-		printYearsAndDays(525600);
-		printYearsAndDays(-8);
-		
-	}
+//	public static void main(String[] args) {
+//		
+//		printYearsAndDays(525600);
+//		printYearsAndDays(-8);
+//		
+//	}
 
 	/**
 	 * 1.A Speed Converter - Convert to MilesPerHour
@@ -162,7 +164,15 @@ public class EvaluationService {
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
 		
-		System.out.format("%.3f", firstNum);
+		DecimalFormat df = new DecimalFormat("#.###");
+		String first = df.format(firstNum);
+		String second = df.format(secondNum);
+		
+		if (first.equals(second)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -370,8 +380,15 @@ public class EvaluationService {
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
 	 */
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		char [] arr = string.toCharArray();
+		char [] reverseArr = new char [arr.length];
+		
+		for (int i = arr.length -1 ; i >= 0; i--) {
+			reverseArr [arr.length -1 - i] = arr [i];
+		}
+		
+		return reverseArr.toString();
 	}
 
 	/**
@@ -382,8 +399,23 @@ public class EvaluationService {
 	 * long name like Portable Network Graphics to its acronym (PNG).
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		char [] arr = phrase.toCharArray();
+		List<String> acr = new ArrayList<String>();
+		String first = Character.toString(arr[0]);
+		acr.add(first);
+		
+		for (int i = 1; i < phrase.length(); i++) {
+			
+			if (arr[i] == ' ') {
+				String x = Character.toString(arr[i + 1]);
+				acr.add(x);
+			}
+			
+		}
+		
+		
+		return acr.toString();
 	}
 
 	/**
@@ -438,18 +470,28 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
+			
+			if (sideOne == sideTwo && sideTwo == sideThree) {
+				return true;
+			} else {
 			return false;
+			}
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
+			if (sideOne == sideTwo || sideTwo == sideThree || sideThree == sideOne) {
+				return true;
+			} else {
 			return false;
+			}
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
+			if (sideOne != sideTwo && sideTwo != sideThree && sideThree != sideOne) {
+				return true;
+			} else {
 			return false;
+			}
 		}
 
 	}
@@ -519,7 +561,11 @@ public class EvaluationService {
 	 * free: 1
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
+		
+		while () {
+			
+		}
+		
 		return null;
 	}
 
@@ -550,7 +596,7 @@ public class EvaluationService {
 	 * Note that 1 is not a prime number.
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
+		
 		return null;
 	}
 
@@ -613,7 +659,15 @@ public class EvaluationService {
 	 */
 	
 	public int[] threeLuckyNumbers() {
-		return null;
+		
+		int [] luck = new int [3];
+		for (int i = 0; i < 3; i++) {
+			int num = (int)(Math.random()*(100-1) + 1);
+			luck[i] = num;
+		}
+		
+		return luck;
+		
 	}
 	
 	/*
@@ -627,6 +681,6 @@ public class EvaluationService {
 	 */
 	
 	public int guessingGame(int x, int y) {
-		return 0;
+		return (int) (Math.random()*(y - x) + x);
 	}
 }
